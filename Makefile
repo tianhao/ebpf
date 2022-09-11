@@ -52,6 +52,8 @@ container-all:
 	${CONTAINER_ENGINE} run --rm ${CONTAINER_RUN_ARGS} \
 		-v "${REPODIR}":/ebpf -w /ebpf --env MAKEFLAGS \
 		--env CFLAGS="-fdebug-prefix-map=/ebpf=." \
+		--env GO111MODULE="on" \
+		--env GOPROXY="https://goproxy.cn" \
 		--env HOME="/tmp" \
 		"${IMAGE}:${VERSION}" \
 		$(MAKE) all
